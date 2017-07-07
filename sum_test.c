@@ -75,11 +75,7 @@ int clearScreen(void) {
 }
 
 void sleepScreen(void) {
-	if (OS == 1) {
-		nanosleep(5);
-	} else {
-		Sleep(5);
-	}
+	Sleep(5)
 }
 
 
