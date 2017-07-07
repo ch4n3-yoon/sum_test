@@ -56,8 +56,8 @@ int main(int argc, char * argv[]) {
 	
 	int i, sum = 0;
 	
-	char track[] = "Ãë¾àÁ¡"; 
-	char name[] = "À±¼®Âù";
+	char track[] = "ì·¨ì•½ì "; 
+	char name[] = "ìœ¤ì„ì°¬";
 		
 	
 	clearScreen();
