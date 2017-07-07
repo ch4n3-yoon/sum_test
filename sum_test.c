@@ -79,7 +79,7 @@ void sleepScreen(void) {
 	if (OS == 1) {
 		usleep(5 * 1000);
 	} else {
-		Sleep(5)
+		Sleep(5);
 	}
 	
 }
