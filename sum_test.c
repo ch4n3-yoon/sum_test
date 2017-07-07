@@ -6,11 +6,11 @@
 
 #ifdef __unix__
 	# define OS 1
-	# include <time.h>
+	# include <unistd.h>
 	
 #elif __linux__
 	# define OS 1
-	# include <time.h>
+	# include <unistd.h>
 	
 	
 
@@ -75,7 +75,14 @@ int clearScreen(void) {
 }
 
 void sleepScreen(void) {
-	Sleep(5)
+	
+	if (OS == 1) {
+		usleep(5 * 1000);
+	} else {
+		Sleep(5)
+	}
+	
 }
+
 
 
