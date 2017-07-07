@@ -7,12 +7,39 @@
 #ifdef __unix__
 	# define OS 1
 	# include <unistd.h>
+	# include <termios.h>
+	
+	int getch(void)
+	{
+	    struct termios oldattr, newattr;
+	    int ch;
+	    tcgetattr( STDIN_FILENO, &oldattr );
+	    newattr = oldattr;
+	    newattr.c_lflag &= ~( ICANON | ECHO );
+	    tcsetattr( STDIN_FILENO, TCSANOW, &newattr );
+	    ch = getchar();
+	    tcsetattr( STDIN_FILENO, TCSANOW, &oldattr );
+	    return ch;
+	}
+	
 	
 #elif __linux__
 	# define OS 1
 	# include <unistd.h>
+	# include <termios.h>
 	
-	
+	int getch(void)
+	{
+	    struct termios oldattr, newattr;
+	    int ch;
+	    tcgetattr( STDIN_FILENO, &oldattr );
+	    newattr = oldattr;
+	    newattr.c_lflag &= ~( ICANON | ECHO );
+	    tcsetattr( STDIN_FILENO, TCSANOW, &newattr );
+	    ch = getchar();
+	    tcsetattr( STDIN_FILENO, TCSANOW, &oldattr );
+	    return ch;
+	}
 
 // if OS is windows, value OS has 2.
 #elif defined _WIN32 
@@ -37,7 +64,7 @@ int main(int argc, char * argv[]) {
 	
 	
 	// print my information
-	printf("[bob6][%s]sum_test[%s]\n", track, name);
+	printf("\n\t\t[bob6][%s]sum_test[%s]\n", track, name);
 	printf("\n\n\n\t\tpress any key to get sum of 1 ~ 100\n");
 	getch();
 	
