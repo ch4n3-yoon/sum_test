@@ -81,6 +81,7 @@ int main(int argc, char * argv[]) {
 		sum += i;
 	}
 
+
 	printf("\n\n\n\t\t\tThe sum (1 ~ 100) : %d\n\n\n\n\n", sum);
 
 	return 0;
